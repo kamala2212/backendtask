@@ -2,5 +2,15 @@ version: '3'
 services:
   web:
     build: .
+    links:
+      - db
     ports:
-      - "5000:5000"
+      - "8000:5000"
+
+  db:
+    image: mysql:latest
+    ports:
+      - "32000:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: mysql
